@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload Form</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+<body>
+    <div id="page-container">
+        <h1>Subida de archivos</h2>
+
+        <section>
+            <img src="/uploads/cloud.png" alt="Imagen de portada...">
+            
+            <form method="post" action="script.php" enctype="multipart/form-data">
+                <label for="file">Select file:</label>
+                <input type="file" name="file" id="file">
+                <input type="submit" value="Upload">
+                <!-- Aquí no vas a encontrar pistas :) -->
+            </form>
+        </section>
+
+        <footer>
+            <p>(c) HACKIIT UGR</p>
+        </footer>
+    </div>
+</body>
+</html>

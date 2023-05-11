@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        /* Add some style to the form */
+        form {
+            margin: 0 auto;
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+				/* Estilo de la barra de navegación */
+		.navbar {
+			overflow: hidden;
+			background-color: #333;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		/* Estilo de los enlaces en la barra de navegación */
+		.navbar a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		/* Estilo de los enlaces activos */
+		.active {
+			background-color: #4CAF50;
+		}
+
+		/* Estilo para el botón de logout */
+		.logout-button {
+			float: right;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			background-color: red;
+			border: none;
+			cursor: pointer;
+		}
+
+		/* Estilo para el botón de registro */
+		.register-button {
+			float: right;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			background-color: blue;
+			border: none;
+			cursor: pointer;
+		}
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+	<!-- Barra de navegación -->
+	<div class="navbar">
+		<a {% if request.path == '/' %} class="active" {% endif %} href="/">Home</a>
+		{% if not session.get('username') %}
+			<a {% if request.path == '/login' %} class="active" {% endif %} href="/login">Login</a>
+			<a {% if request.path == '/register' %} class="active" {% endif %} href="/register">Register</a>
+		{% else %}
+			{% if request.path != '/' %}
+				<button class="logout-button" onclick="location.href='/logout'">Logout</button>
+			{% endif %}
+		{% endif %}
+	</div>
+
+    <form action="/login" method="post">
+        <label>Username:</label>
+        <input type="text" name="username"><br>
+        <label>Password:</label>
+        <input type="password" name="password"><br>
+        <input type="text" name="admin" value="0" hidden="true"><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+

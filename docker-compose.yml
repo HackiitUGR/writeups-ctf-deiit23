@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  # web
+  trueadmin:
+    build:
+      context: ./web/true4dmin
+    restart: unless-stopped
+    ports:
+      - 31415:5000
+
+  introspective:
+    build:
+      context: ./web/introsp3ctiv3
+    restart: unless-stopped
+    ports:
+      - 31422:5002
+
+  sqlito:
+    build:
+      context: ./web/sqlito
+    restart: unless-stopped
+    ports:
+      - 31419:6001
+
+  controlupload:
+    build:
+      context: ./web/contr0lTh3Upl04d
+    restart: unless-stopped
+    ports:
+      - 31421:80
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:31421/"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  # Pwn
+  touch:
+    build:
+      context: ./pwn/touch/deploy
+    restart: unless-stopped
+    ports:
+      - 31417:31337
+
+
