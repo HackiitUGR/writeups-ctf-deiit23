@@ -44,4 +44,13 @@ services:
     ports:
       - 31417:31337
 
+  # Misc
+  lostflag:
+    build:
+      context: ./misc/LostFlag
+    restart: unless-stopped
+    read_only: true
+    ports:
+      - 31418:2222
+
 
